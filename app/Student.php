@@ -8,6 +8,6 @@ class Student extends Model
 {
     public function assignments()
     {
-        return $this->belongsToMany('App\Assignment');
+        return $this->belongsToMany('App\Assignment')->withPivot('grade');
     }
 }

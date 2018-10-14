@@ -26,6 +26,7 @@ Route::resource('assignments','AssignmentsController');
 
 Route::get('/assignments/{assignment}/grades', 'AssignmentsController@grades');
 Route::get('/assignments/{assignment}/{student}/edit', 'AssignmentsController@editgrade');
+Route::put('/assignments/{assignment}/{student}/update', 'AssignmentsController@updategrade');
 
 
 

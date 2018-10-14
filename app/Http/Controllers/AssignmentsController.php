@@ -124,7 +124,16 @@ class AssignmentsController extends Controller
     public function editgrade($assignment, $student){
         $a = Assignment::find($assignment);
         $s = Student::find($student);
-        $data = array('assignment'=>$a,'student'=>$s);
+        // $g = Assignment::find($assignment)->grades()->
+        //get grade for this assignment and this student
+        $g = Assignment::findOrFail($assignment)->grades()->wherePivot('student_id', '=', $student)
+    ->get(); // execute the query
+
+        $data = array('assignment'=>$a,'student'=>$s, 'grade'=>$g);
         return view('assignments.editgrade')->with('data', $data);
+    }
+
+    public function updategrade(){
+        return '123';
     }
 }
