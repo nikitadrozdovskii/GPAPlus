@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
+use App\Assignment;
 
-class StudentsController extends Controller
+class AssignmentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('students.index')->with('students',$students);
+        $assignments = Assignment::all();
+        return view('assignments.index')->with('assignments',$assignments);
     }
 
     /**

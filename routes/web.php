@@ -15,7 +15,8 @@ Route::get('/', 'PagesController@index');
 Route::get('/main', 'PagesController@index');
 
 
-Route::get('/students', 'PagesController@students');
+Route::resource('students','StudentsController');
+Route::resource('assignments','AssignmentsController');
 
 
 

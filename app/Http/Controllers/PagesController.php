@@ -13,4 +13,8 @@ class PagesController extends Controller
     public function students(){
         return view('pages.students');
     }
+
+    public function assignments(){
+        return view('pages.assignments');
+    }
 }
