@@ -24,3 +24,6 @@ Route::resource('assignments','AssignmentsController');
 //     return view('pages.main');
 // });
 
+Route::get('/assignments/{assignment}/grades', 'AssignmentsController@grades');
+
+

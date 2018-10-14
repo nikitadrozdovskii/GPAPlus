@@ -113,4 +113,9 @@ class AssignmentsController extends Controller
         $assignment->delete();
         return redirect('/assignments')->with('success', 'Assignment deleted');
     }
+
+    public function grades($id){
+        $grades = Assignment::find($id)->grades;
+        return view('assignments.grades')->with('grades',$grades);
+    }
 }
