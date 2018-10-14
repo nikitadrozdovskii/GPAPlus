@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Assignment;
+use App\Student;
+
 
 class AssignmentsController extends Controller
 {
@@ -117,5 +119,12 @@ class AssignmentsController extends Controller
     public function grades($id){
         $grades = Assignment::find($id)->grades;
         return view('assignments.grades')->with('grades',$grades);
+    }
+
+    public function editgrade($assignment, $student){
+        $a = Assignment::find($assignment);
+        $s = Student::find($student);
+        $data = array('assignment'=>$a,'student'=>$s);
+        return view('assignments.editgrade')->with('data', $data);
     }
 }
