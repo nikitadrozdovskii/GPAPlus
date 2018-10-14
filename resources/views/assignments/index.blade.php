@@ -9,6 +9,11 @@
                 Name: {{$assignment->name}}
                 Description: {{$assignment->desc}} 
                 Due date: {{$assignment->due}}
+                <a class="btn btn-primary" href="/assignments/{{$assignment->id}}/edit" role="button">Edit</a>
+                {!!Form::open(['action'=>['AssignmentsController@destroy', $assignment->id], 'method' => 'POST'])!!}
+                            {{Form::hidden('_method', 'DELETE')}}
+                            {{Form::submit('Delete', ['class' => 'btn btn-danger btn-outline'])}}
+                        {!!Form::close()!!}
                 <hr>
             </div>
         @endforeach

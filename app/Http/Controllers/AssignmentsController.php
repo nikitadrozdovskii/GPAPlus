@@ -72,7 +72,8 @@ class AssignmentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $assignment = Assignment::find($id);
+        return view('assignments.edit')->with('assignment',$assignment);
     }
 
     /**
@@ -84,7 +85,20 @@ class AssignmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            $this->validate($request, [
+                'name' => 'required',
+                'due' => 'required'
+            ])
+        ]);
+
+        $assignment = Assignment::find($id);
+        $assignment->name = $request->input('name');
+        $assignment->desc = $request->input('desc');
+        $assignment->due = $request->input('due');
+        $assignment->save();
+
+        return redirect('/assignments')->with('success', 'Assignment updated');
     }
 
     /**
@@ -95,6 +109,8 @@ class AssignmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $assignment = Assignment::find($id);
+        $assignment->delete();
+        return redirect('/assignments')->with('success', 'Assignment deleted');
     }
 }
