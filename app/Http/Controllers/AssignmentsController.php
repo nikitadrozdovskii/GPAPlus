@@ -133,7 +133,9 @@ class AssignmentsController extends Controller
         return view('assignments.editgrade')->with('data', $data);
     }
 
-    public function updategrade(){
-        return '123';
+    //update grade in database
+    public function updategrade(Request $request, $student,$assignment){
+        $grade = Assignment::find($assignment)->grades()->updateExistingPivot($student, ['grade' => (double)$request->grade]);
+        return redirect('/assignments')->with('success', 'Grade updated');
     }
 }
