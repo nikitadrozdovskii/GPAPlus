@@ -25,7 +25,7 @@ class AssignmentsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('assignments.create');
     }
 
     /**
@@ -36,7 +36,21 @@ class AssignmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            $this->validate($request, [
+                'name' => 'required',
+                'due' => 'required'
+            ])
+        ]);
+
+        //create assignment
+        $assignment = new Assignment;
+        $assignment->name = $request->input('name');
+        $assignment->desc = $request->input('desc');
+        $assignment->due = $request->input('due');
+        $assignment->save();
+
+        return redirect('/assignments')->with('success', 'Assignment added');
     }
 
     /**
