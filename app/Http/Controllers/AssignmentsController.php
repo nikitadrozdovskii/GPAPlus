@@ -136,6 +136,6 @@ class AssignmentsController extends Controller
     //update grade in database
     public function updategrade(Request $request, $student,$assignment){
         $grade = Assignment::find($assignment)->grades()->updateExistingPivot($student, ['grade' => (double)$request->grade]);
-        return redirect('/assignments')->with('success', 'Grade updated');
+        return redirect()->route('assignments.grades',[$assignment])->with('success', 'Grade updated');
     }
 }

@@ -12,5 +12,6 @@
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 {!! Form::close() !!} 
+<a class="btn btn-secondary" href="/assignments/{{$data['assignment']->id}}/grades" role="button">Back</a>
 
 @endsection
