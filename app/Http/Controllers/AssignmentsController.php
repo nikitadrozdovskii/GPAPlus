@@ -149,7 +149,8 @@ class AssignmentsController extends Controller
             $studentsdropdown[$student->id] = $student->fname." ".$student->lname;
 
         }
-        $data = array('students'=>$studentsdropdown, 'assignment'=>$assignment);        
+        $assignmentname = Assignment::find($assignment)->name;
+        $data = array('students'=>$studentsdropdown, 'assignmentname'=>$assignmentname, 'assignment'=>$assignment);        
         return view('assignments.newgrade')->with('data', $data);
     }
 
@@ -157,6 +158,10 @@ class AssignmentsController extends Controller
        public function savenewgrade(Request $request, $assignment){
            $student =  $request->input('student');
            $grade =  $request->input('grade');
+           //check for duplicates
+           if ( Assignment::findOrFail($assignment)->grades->contains($student)){
+                return redirect()->route('assignments.grades',[$assignment])->with('error', 'Grade for this student already exists');
+           }
            $g = Assignment::findOrFail($assignment)->grades()->attach($student, ['grade' => $grade]);
         return redirect()->route('assignments.grades',[$assignment])->with('success', 'Grade added');
 

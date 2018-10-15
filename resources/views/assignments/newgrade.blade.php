@@ -3,7 +3,7 @@
 @section('content') 
 <h4>Add new grade</h4>
 {{-- populate dropdown with students, add grade --}}
-Assignment: {{$data['assignment']}}
+{{$data['assignmentname']}}
 {!! Form::open(['action' => ['AssignmentsController@savenewgrade', $data['assignment']], 'method' => 'POST']) !!}
     <div class="form-group">
         {{Form::label('student', 'Student Name')}}

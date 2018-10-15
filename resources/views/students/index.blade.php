@@ -7,7 +7,7 @@
         @foreach($students as $student)
             <div class="well">
                 First: {{$student->fname}}
-                Last: {{$student->fname}} 
+                Last: {{$student->lname}} 
                 Grade: {{$student->grade}}
                 <div>
                         <a class="btn btn-primary" href="/students/{{$student->id}}/edit" role="button">Edit</a>
