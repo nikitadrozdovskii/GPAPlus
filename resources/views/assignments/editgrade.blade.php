@@ -3,7 +3,7 @@
 @section('content') 
 <h4>Edit Grade for {{$data['student']->fname}} {{$data['student']->lname}} , {{$data['assignment']->name}}  </h4>
 
-{{$data['grade'][0]->pivot->grade}}
+{{-- {{$data['grade'][0]->pivot->grade}} --}}
 {!! Form::open(['action' => ['AssignmentsController@updategrade', $data['student']->id, $data['assignment']->id, $data['assignment']->id], 'method' => 'POST']) !!}
     <div class="form-group">
         {{Form::label('grade', 'Grade')}}

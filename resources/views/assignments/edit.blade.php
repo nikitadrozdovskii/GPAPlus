@@ -4,7 +4,7 @@
 <h4>Edit Assignment</h4>
 {!! Form::open(['action' => ['AssignmentsController@update', $assignment->id], 'method' => 'POST']) !!}
     <div class="form-group">
-        {{Form::label('name', 'First Name')}}
+        {{Form::label('name', 'Assignment Name')}}
         {{Form::text('name',$assignment->name,['class'=>'form-control'])}}
     </div>
     <div class="form-group">
@@ -12,7 +12,7 @@
             {{Form::date('due',$assignment->due,['class'=>'form-control'])}}
         </div>
     <div class="form-group">
-            {{Form::label('desc', 'Last Name')}}
+            {{Form::label('desc', 'Description')}}
             {{Form::textarea('desc',$assignment->desc,['class'=>'form-control'])}}
     </div>
     <a class="btn btn-secondary" href="/assignments" role="button">Back</a>

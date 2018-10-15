@@ -118,7 +118,8 @@ class AssignmentsController extends Controller
 
     public function grades($id){
         $grades = Assignment::find($id)->grades;
-        return view('assignments.grades')->with('grades',$grades);
+        $data = array("grades"=>$grades,"assignment"=>Assignment::find($id));
+        return view('assignments.grades')->with('data',$data);
     }
 
     public function editgrade($assignment, $student){
@@ -137,5 +138,27 @@ class AssignmentsController extends Controller
     public function updategrade(Request $request, $student,$assignment){
         $grade = Assignment::find($assignment)->grades()->updateExistingPivot($student, ['grade' => (double)$request->grade]);
         return redirect()->route('assignments.grades',[$assignment])->with('success', 'Grade updated');
+    }
+
+    //show new grade page
+    public function newgrade(Request $request,$assignment){
+        $students = Student::all();
+        $studentsdropdown=array();
+        foreach($students as $student)
+        {
+            $studentsdropdown[$student->id] = $student->fname." ".$student->lname;
+
+        }
+        $data = array('students'=>$studentsdropdown, 'assignment'=>$assignment);        
+        return view('assignments.newgrade')->with('data', $data);
+    }
+
+    //add new grade to database
+       public function savenewgrade(Request $request, $assignment){
+           $student =  $request->input('student');
+           $grade =  $request->input('grade');
+           $g = Assignment::findOrFail($assignment)->grades()->attach($student, ['grade' => $grade]);
+        return redirect()->route('assignments.grades',[$assignment])->with('success', 'Grade added');
+
     }
 }

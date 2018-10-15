@@ -28,5 +28,10 @@ Route::get('/assignments/{assignment}/grades', 'AssignmentsController@grades')->
 Route::get('/assignments/{assignment}/{student}/edit', 'AssignmentsController@editgrade');
 Route::put('/assignments/{assignment}/{student}/{grade}/update', 'AssignmentsController@updategrade');
 
+Route::get('/assignments/{assignment}/grades/new', 'AssignmentsController@newgrade');
+Route::put('/assignments/{assignment}/savenewgrade', 'AssignmentsController@savenewgrade');
+
+
+
 
 
