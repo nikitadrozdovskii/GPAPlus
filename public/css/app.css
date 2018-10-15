@@ -10466,6 +10466,10 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background-image: url("/img/school.png");
+}
+
 .F,
 .C,
 .B,

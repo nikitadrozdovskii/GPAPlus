@@ -1,9 +1,8 @@
 @extends('layouts.mainlayout')
 
 @section('content') 
-<h4>Add new grade</h4>
+<h4>Add new grade for {{$data['assignmentname']}}</h4>
 {{-- populate dropdown with students, add grade --}}
-{{$data['assignmentname']}}
 {!! Form::open(['action' => ['AssignmentsController@savenewgrade', $data['assignment']], 'method' => 'POST']) !!}
     <div class="form-group">
         {{Form::label('student', 'Student Name')}}

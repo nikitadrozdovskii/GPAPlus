@@ -9,9 +9,10 @@
         {{Form::label('grade', 'Grade')}}
         {{Form::text('grade',$data['grade'][0]->pivot->grade,['class'=>'form-control'])}}
     </div>
+<a class="btn btn-secondary" href="/assignments/{{$data['assignment']->id}}/grades" role="button">Back</a>
+
     {{Form::hidden('_method', 'PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 {!! Form::close() !!} 
-<a class="btn btn-secondary" href="/assignments/{{$data['assignment']->id}}/grades" role="button">Back</a>
 
 @endsection

@@ -6,15 +6,16 @@
 </div>
 <h3>Grades for {{$data['assignment']->name}}</h3>
     @foreach($data['grades'] as $student)
-        {{$student->fname}}
-        {{$student->lname}}
-        {{$student->pivot->grade}} 
-        <a class="btn btn-primary" href="/assignments/{{$student->pivot->assignment_id}}/{{$student->pivot->student_id}}/edit" role="button">Edit grade</a> 
-        {{-- <a class="btn btn-primary" href="/assignments/{{$student->pivot->assignment_id}}/{{$student->pivot->student_id}}/grade/delete" role="button">Delete grade</a> --}}
-        {!! Form::open(['action' => ['AssignmentsController@deletegrade', $student->pivot->assignment_id,$student->pivot->student_id], 'method' => 'POST']) !!}
-
-        {{Form::hidden('_method', 'DELETE')}}
-        {{Form::submit('Delete grade', ['class' => 'btn btn-primary'])}}                
+        <div class="well">
+                {{$student->fname}}
+                {{$student->lname}}
+                {{$student->pivot->grade}} 
+                <a class="btn btn-primary" href="/assignments/{{$student->pivot->assignment_id}}/{{$student->pivot->student_id}}/edit" role="button">Edit grade</a> 
+                {{-- <a class="btn btn-primary" href="/assignments/{{$student->pivot->assignment_id}}/{{$student->pivot->student_id}}/grade/delete" role="button">Delete grade</a> --}}
+                {!! Form::open(['action' => ['AssignmentsController@deletegrade', $student->pivot->assignment_id,$student->pivot->student_id], 'method' => 'POST']) !!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete grade', ['class' => 'btn btn-danger'])}}                
+        </div>
         <hr>
     @endforeach
 @endsection 
