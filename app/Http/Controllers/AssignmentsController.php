@@ -161,4 +161,9 @@ class AssignmentsController extends Controller
         return redirect()->route('assignments.grades',[$assignment])->with('success', 'Grade added');
 
     }
+
+    public function deletegrade(Request $request, $assignment,$student){
+        Assignment::findOrFail($assignment)->grades()->detach($student);
+        return redirect()->route('assignments.grades',[$assignment])->with('success', 'Grade deleted');
+ }
 }

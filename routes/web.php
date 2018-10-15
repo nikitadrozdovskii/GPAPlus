@@ -30,7 +30,7 @@ Route::put('/assignments/{assignment}/{student}/{grade}/update', 'AssignmentsCon
 
 Route::get('/assignments/{assignment}/grades/new', 'AssignmentsController@newgrade');
 Route::put('/assignments/{assignment}/savenewgrade', 'AssignmentsController@savenewgrade');
-
+Route::delete('/assignments/{assignment}/{student}/grade/delete', 'AssignmentsController@deletegrade');
 
 
 
