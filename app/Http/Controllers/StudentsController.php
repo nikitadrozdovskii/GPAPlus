@@ -27,6 +27,8 @@ class StudentsController extends Controller
             }
             if ($counter>0){
                 $averages[$student->id] = $total_grade/$counter;
+            } else {
+                $averages[$student->id] = 0;
             }
 
         }

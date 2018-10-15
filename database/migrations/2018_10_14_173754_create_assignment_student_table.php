@@ -16,6 +16,7 @@ class CreateAssignmentStudentTable extends Migration
         Schema::create('assignment_student', function (Blueprint $table) {
             $table->integer('assignment_id');
             $table->integer('student_id');
+            $table->double('grade');
             $table->timestamps();
         });
 
