@@ -10466,6 +10466,38 @@ a.text-dark:focus {
   }
 }
 
+.F,
+.C,
+.B,
+.A {
+  font-size: 1.6rem;
+  vertical-align: middle;
+}
+
+.F {
+  color: red;
+}
+
+.C {
+  color: orange;
+}
+
+.B {
+  color: yellow;
+}
+
+.A {
+  color: green;
+}
+
+form {
+  display: inline-block;
+}
+
+.inline_heading {
+  font-weight: 700 !important;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px #0000000a;
