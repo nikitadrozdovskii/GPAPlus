@@ -3,12 +3,12 @@
 @section('content')
     <h4>Students</h4>
     <a class="btn btn-primary" href="/students/create" role="button">Add new student</a>
-    @if(count($students)>0)
-        @foreach($students as $student)
+    @if(count($data['students'])>0)
+        @foreach($data['students'] as $student)
             <div class="well">
                 First: {{$student->fname}}
                 Last: {{$student->lname}} 
-                Grade: {{$student->grade}}
+                Average assignment grade: {{$data['averages'][$student->id]}}
                 <div>
                         <a class="btn btn-primary" href="/students/{{$student->id}}/edit" role="button">Edit</a>
                         {!!Form::open(['action'=>['StudentsController@destroy', $student->id], 'method' => 'POST'])!!}

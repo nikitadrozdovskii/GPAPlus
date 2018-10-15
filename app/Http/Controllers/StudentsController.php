@@ -15,7 +15,24 @@ class StudentsController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('students.index')->with('students',$students);
+        $averages = array();
+        //iterate through students, get all their assignments, calculate GPA here, pass straight into view
+        foreach($students as $student){
+            $assignment_grades = Student::find($student->id)->grades;
+            $total_grade = 0;
+            $counter = null;
+            foreach($assignment_grades as $assignment_grade){
+                $counter+=1;
+                $total_grade += $assignment_grade->pivot->grade;
+            }
+            if ($counter>0){
+                $averages[$student->id] = $total_grade/$counter;
+            }
+
+        }
+        $data = array('averages'=>$averages,'students'=>$students);
+        // return $data;
+        return view('students.index')->with('data',$data);
     }
 
     /**

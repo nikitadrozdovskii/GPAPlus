@@ -10,6 +10,6 @@ class Assignment extends Model
 
     public function grades()
     {
-        return $this->belongsToMany('App\Student')->withPivot('grade');;
+        return $this->belongsToMany('App\Student')->withPivot('grade');
     }
 }
