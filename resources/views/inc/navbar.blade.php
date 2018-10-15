@@ -4,8 +4,6 @@
     <a class="p-2 text-dark" href="/">Home</a>
     <a class="p-2 text-dark" href="/students">Students</a>
     <a class="p-2 text-dark" href="/assignments">Assignments</a>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
-    <a class="btn btn-outline-primary" href="#">Sign in</a>
 </nav>
 
 </div>
